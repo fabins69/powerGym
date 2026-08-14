@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Power Gym | Academia em Presidente Epitácio</title>
+
+    <meta
+        name="description"
+        content="Power Gym - Academia em Presidente Epitácio. Musculação, emagrecimento, spinning, personal trainer e muito mais."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    />
+
+    <style>
+        /* ========================================
+           RESET
+        ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #090909;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        button {
+            font-family: inherit;
+        }
+
+        /* ========================================
+           VARIABLES
+        ======================================== */
+        :root {
+            --orange: #ff6a00;
+            --orange-light: #ff8c24;
+            --orange-dark: #d94f00;
+            --black: #080808;
+            --black-2: #111111;
+            --black-3: #181818;
+            --white: #ffffff;
+            --gray: #a8a8a8;
+            --container: 1180px;
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        /* ========================================
+           HEADER (fixo)
+        ======================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0.88);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 106, 0, 0.15);
+        }
+        .navbar {
+            height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #fff 0 43%, var(--orange) 44% 50%, #122b55 51% 100%);
+            display: grid;
+            place-items: center;
+            color: #222;
+            font-weight: 900;
+            font-size: 9px;
+            text-align: center;
+            border: 2px solid #fff;
+        }
+        .logo-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 27px;
+            letter-spacing: 1px;
+        }
+        .logo-text span {
+            color: var(--orange);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        nav a {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: var(--orange);
+        }
+        .nav-button {
+            padding: 13px 20px;
+            border-radius: 5px;
+            background: var(--orange);
+            color: #fff !important;
+            box-shadow: 0 0 25px rgba(255, 106, 0, 0.25);
+        }
+        .nav-button:hover {
+            background: #fff;
+            color: #111 !important;
+        }
+        .menu-button {
+            display: none;
+            border: 0;
+            background: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* ========================================
+           HERO – com vídeo de fundo
+        ======================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+            padding-top: 70px;
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(60px, 10vw, 110px);
+            line-height: 0.9;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .hero h1 span {
+            color: var(--orange);
+            display: block;
+        }
+
+        .hero-sub {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--orange);
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .hero-description {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #ccc;
+            max-width: 580px;
+            margin-bottom: 30px;
+        }
+
+        .hero-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 20px;
+            margin-bottom: 35px;
+            padding: 0;
+        }
+        .hero-list li {
+            font-size: 15px;
+            font-weight: 500;
+            color: #ddd;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .hero-list li::before {
+            content: "✓";
+            color: var(--orange);
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 54px;
+            padding: 0 32px;
+            border-radius: 5px;
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: var(--orange);
+            color: #fff;
+            box-shadow: 0 10px 35px rgba(255, 106, 0, 0.25);
+        }
+        .btn-primary:hover {
+            background: #fff;
+            color: #111;
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+        }
+        .btn-outline:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        /* ========================================
+           STATS
+        ======================================== */
+        .stats {
+            position: relative;
+            z-index: 5;
+            margin-top: -65px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: #141414;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-bottom: 3px solid var(--orange);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+        .stat {
+            padding: 28px 20px;
+            text-align: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .stat:last-child {
+            border-right: 0;
+        }
+        .stat strong {
+            display: block;
+            font-family: 'Bebas Neue', sans-serif;
+            color: var(--orange);
+            font-size: 40px;
+            line-height: 1;
+        }
+        .stat span {
+            display: block;
+            margin-top: 7px;
+            color: #aaa;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ========================================
+           SEÇÕES GERAIS
+        ======================================== */
+        section {
+            padding: 110px 0;
+        }
+        .section-header {
+            max-width: 650px;
+            margin-bottom: 55px;
+        }
+        .section-tag {
+            color: var(--orange);
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(48px, 6vw, 75px);
+            line-height: 0.9;
+            letter-spacing: 1px;
+        }
+        .section-title span {
+            color: var(--orange);
+        }
+        .section-description {
+            color: #999;
+            margin-top: 18px;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* ========================================
+           SOBRE
+        ======================================== */
+        .about {
+            background: #090909;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+        .about-images {
+            position: relative;
+        }
+        .about-main-image {
+            width: 90%;
+            height: 520px;
+            object-fit: cover;
+            border-radius: 4px;
+            filter: saturate(1.1);
+        }
+        .about-small-image {
+            position: absolute;
+            right: 0;
+            bottom: -45px;
+            width: 48%;
+            height: 250px;
+            object-fit: cover;
+            border: 8px solid #090909;
+        }
+        .orange-box {
+            position: absolute;
+            left: -20px;
+            bottom: -20px;
+            width: 120px;
+            height: 120px;
+            background: var(--orange);
+            z-index: -1;
+        }
+        .about-content h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 42px;
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+        .about-content p {
+            color: #aaa;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        .check-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .check-list li {
+            color: #ddd;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .check-list li::before {
+            content: "✓";
+            width: 23px;
+            height: 23px;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 106, 0, 0.12);
+            color: var(--orange);
+            border-radius: 50%;
+            font-weight: 900;
+        }
+
+        /* ========================================
+           MODALIDADES
+        ======================================== */
+        .services {
+            background: linear-gradient(rgba(15, 15, 15, 0.96), rgba(15, 15, 15, 0.96)),
+                url("imagens/sala.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .service-card {
+            position: relative;
+            padding: 35px 30px;
+            min-height: 220px;
+            background: #191919;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            overflow: hidden;
+            transition: 0.35s;
+        }
+        .service-card::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            right: -40px;
+            bottom: -40px;
+            border-radius: 50%;
+            background: var(--orange);
+            opacity: 0.08;
+        }
+        .service-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(255, 106, 0, 0.5);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 106, 0, 0.12);
+            color: var(--orange);
+            font-size: 23px;
+            margin-bottom: 25px;
+            border-radius: 5px;
+        }
+        .service-card h3 {
+            font-size: 17px;
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            color: #888;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* ========================================
+           PLANOS E PREÇOS
+        ======================================== */
+        .plans {
+            background: #0c0c0c;
+            padding: 110px 0;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .plan-card {
+            background: #151515;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: 0.3s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 106, 0, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .plan-card.featured {
+            border-color: var(--orange);
+            background: #1a1a1a;
+        }
+
+        .plan-badge {
+            background: var(--orange);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 16px;
+            align-self: center;
+        }
+
+        .plan-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            letter-spacing: 2px;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .plan-price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            color: var(--orange);
+            line-height: 1;
+        }
+
+        .plan-period {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 4px;
+        }
+
+        .plan-installment {
+            font-size: 13px;
+            color: #aaa;
+            margin-bottom: 16px;
+        }
+
+        .plan-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0 24px;
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .plan-card ul li {
+            color: #ccc;
+            font-size: 13px;
+            padding: 4px 0;
+        }
+
+        .plan-card small {
+            color: #666;
+            font-size: 12px;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .btn-plan {
+            width: 100%;
+            min-height: 44px;
+            font-size: 12px;
+        }
+
+        /* ========================================
+           GALERIA
+        ======================================== */
+        .gallery {
+            background: #0c0c0c;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            grid-template-rows: 250px 250px;
+            gap: 12px;
+        }
+        .gallery-item {
+            overflow: hidden;
+            position: relative;
+        }
+        .gallery-item:first-child {
+            grid-row: span 2;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.06);
+        }
+        .gallery-item::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.55));
+        }
+
+        /* ========================================
+           DEPOIMENTOS
+        ======================================== */
+        .testimonials {
+            background: #111;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .testimonial {
+            background: #191919;
+            padding: 32px;
+            border-top: 2px solid var(--orange);
+        }
+        .testimonial-stars {
+            color: #ffc107;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        .testimonial p {
+            color: #bbb;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        .testimonial-author {
+            font-size: 13px;
+            font-weight: 800;
+        }
+        .testimonial-author span {
+            display: block;
+            color: #666;
+            margin-top: 5px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* ========================================
+           CTA FINAL
+        ======================================== */
+        .cta {
+            padding: 90px 0;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(110deg, #ff6200, #d94400);
+        }
+        .cta::before {
+            content: "POWER";
+            position: absolute;
+            right: -30px;
+            bottom: -80px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 250px;
+            color: rgba(255, 255, 255, 0.07);
+        }
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .cta h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(50px, 6vw, 78px);
+            line-height: 0.85;
+        }
+        .cta p {
+            max-width: 580px;
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+        }
+        .cta .btn {
+            background: #fff;
+            color: #111;
+            white-space: nowrap;
+        }
+        .cta .btn:hover {
+            background: #111;
+            color: #fff;
+        }
+
+        /* ========================================
+           CONTATO
+        ======================================== */
+        .contact {
+            background: #090909;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 60px;
+            align-items: stretch;
+        }
+        .contact-info {
+            padding: 45px;
+            background: #151515;
+            border-left: 3px solid var(--orange);
+        }
+        .contact-info h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 45px;
+            margin-bottom: 30px;
+        }
+        .contact-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 25px;
+        }
+        .contact-icon {
+            min-width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 106, 0, 0.12);
+            color: var(--orange);
+            border-radius: 4px;
+        }
+        .contact-item strong {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        .contact-item span {
+            color: #999;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .map {
+            min-height: 450px;
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+                url("imagens/fachada.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+        }
+        .map-button {
+            margin: 25px;
+        }
+
+        /* ========================================
+           RODAPÉ
+        ======================================== */
+        footer {
+            background: #050505;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 30px 0;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 25px;
+        }
+        .footer-logo span {
+            color: var(--orange);
+        }
+        .copyright {
+            color: #666;
+            font-size: 11px;
+        }
+        .instagram {
+            color: var(--orange);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        /* ========================================
+           WHATSAPP FLUTUANTE
+        ======================================== */
+        .whatsapp {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25d366;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-size: 25px;
+            z-index: 999;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.35);
+            transition: 0.3s;
+        }
+        .whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        /* ========================================
+           RESPONSIVO
+        ======================================== */
+        @media (max-width: 900px) {
+            nav {
+                position: fixed;
+                top: 78px;
+                right: -100%;
+                width: 280px;
+                height: calc(100vh - 78px);
+                background: #0d0d0d;
+                padding: 40px 30px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                transition: 0.35s;
+            }
+            nav.active {
+                right: 0;
+            }
+            .menu-button {
+                display: block;
+            }
+            .hero-content {
+                width: 100%;
+            }
+            .hero-list {
+                grid-template-columns: 1fr 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .plans-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .map {
+                min-height: 350px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: min(100% - 28px, 1180px);
+            }
+            .navbar {
+                height: 68px;
+            }
+            nav {
+                top: 68px;
+                height: calc(100vh - 68px);
+            }
+            .hero {
+                min-height: 780px;
+            }
+            .hero h1 {
+                font-size: 72px;
+            }
+            .hero-description {
+                font-size: 14px;
+            }
+            .hero-list {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            .hero-list li {
+                font-size: 14px;
+            }
+            .stats {
+                margin-top: -35px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .stat {
+                padding: 22px 10px;
+            }
+            .stat strong {
+                font-size: 32px;
+            }
+            section {
+                padding: 75px 0;
+            }
+            .about-main-image {
+                width: 100%;
+                height: 360px;
+            }
+            .about-small-image {
+                display: none;
+            }
+            .orange-box {
+                display: none;
+            }
+            .check-list {
+                grid-template-columns: 1fr;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: 300px 200px 200px;
+            }
+            .gallery-item:first-child {
+                grid-row: auto;
+            }
+            .contact-info {
+                padding: 30px 22px;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .whatsapp {
+                right: 15px;
+                bottom: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ========================================
+         HEADER
+    ========================================= -->
+    <header>
+        <div class="container navbar">
+            <a href="#inicio" class="logo">
+                <div class="logo-circle">POWER<br />GYM</div>
+                <div class="logo-text">POWER <span>GYM</span></div>
+            </a>
+            <button class="menu-button" id="menuButton" aria-label="Abrir menu">☰</button>
+            <nav id="nav">
+                <a href="#inicio">Início</a>
+                <a href="#academia">Academia</a>
+                <a href="#modalidades">Modalidades</a>
+                <a href="#planos">Planos</a>
+                <a href="#estrutura">Estrutura</a>
+                <a href="#avaliacoes">Avaliações</a>
+                <a href="#contato">Contato</a>
+                <a href="https://wa.me/551832815624" class="nav-button" target="_blank">Quero treinar</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========================================
+         HERO – COM VÍDEO DE FUNDO
+    ========================================= -->
+    <section class="hero" id="inicio">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source
+                src="./img/AQOcWQuifL0Obuefum2W3wvfDqZoZzTvQ_UrSJRx4Yh_a7C-3SWAugAYtp-HUJ67hMsUBY8vCC3keHibBp0OPCbSxm3y5U90cXo.mp4"
+                type="video/mp4"
+            />
+            <img
+                src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlKvK7jz8UeXpCXrrm9addoqgdvGsQpO7qtQojLI38p2wWH2J9oo1BoKTsPz_qn9TXE6qGlW56adXPncfNS6yju8YGRF7CuGBF0NCPxHa1tmhfXG_XHUm2la1Se40wC-MsU8Ej7hbdhv-c-=s1360-w1360-h1020-rw"
+                alt="Fundo Power Gym"
+            />
+        </video>
+
+        <div class="hero-overlay"></div>
+
+        <div class="container">
+            <div class="hero-content">
+                <h1>ACADEMIA <span>POWER GYM</span></h1>
+                <p class="hero-sub">Presidente Epitácio - SP</p>
+                <p class="hero-description">
+                    Um espaço para você treinar, evoluir e cuidar da sua saúde.
+                    Musculação, cardio, equipamentos e ambiente preparado para
+                    deixar seu treino ainda melhor.
+                </p>
+
+                <ul class="hero-list">
+                    <li>🏋️ Musculação</li>
+                    <li>🔥 Emagrecimento</li>
+                    <li>❄️ Ambiente climatizado</li>
+                    <li>📺 TVs</li>
+                    <li>🚴 Spinning</li>
+                    <li>👟 Personal Trainer</li>
+                </ul>
+
+                <div class="hero-buttons">
+                    <a href="#planos" class="btn btn-primary">Conhecer planos →</a>
+                    <a
+                        href="https://wa.me/551832815624?text=Olá!%20Quero%20saber%20mais%20sobre%20a%20Power%20Gym."
+                        target="_blank"
+                        class="btn btn-outline"
+                    >Falar com a Power Gym</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         STATS
+    ========================================= -->
+    <div class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat"><strong>4,7</strong><span>Avaliação Google</span></div>
+                <div class="stat"><strong>157+</strong><span>Avaliações</span></div>
+                <div class="stat"><strong>100%</strong><span>Foco em você</span></div>
+                <div class="stat"><strong>POWER</strong><span>Seu novo ritmo</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         SOBRE
+    ========================================= -->
+    <section class="about" id="academia">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-images">
+                    <img
+                        src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWleTd1pj-574z0I_zwUiGFm0M7X_YAlcebc3A2o6GS90bdvopwb8LTpTWzASWFriB4ELEYHfGXRId6nravJa6rWM8sApoFCZKov7wlnzYSrqqHGiU2Yvcv9IwJ50L4uAeGZ9KToN0L-vEgF=s1360-w1360-h1020-rw"
+                        class="about-main-image"
+                        alt="Interior da Academia Power Gym"
+                    />
+                    <img
+                        src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmI9Ev1X-W3LqUj7ab__5pHxxdC1OSHbvyeQrkszdxbRYrayJ-0tmrorrNhhQlgr5xYzeIHtlMDSusFCV1uWJBiW0rQXgG0twSiKnCZjNujFoLWrC-JgSq7nrGsMDqjVvRsYjeI5De79HCo=s1360-w1360-h1020-rw"
+                        class="about-small-image"
+                        alt="Equipamentos da Power Gym"
+                    />
+                    <div class="orange-box"></div>
+                </div>
+
+                <div class="about-content">
+                    <div class="section-tag">SOBRE A POWER GYM</div>
+                    <h2 class="section-title">MAIS QUE UMA <span>ACADEMIA.</span></h2>
+                    <p>
+                        A Power Gym foi criada para quem não quer apenas
+                        treinar, mas quer evoluir. Um ambiente completo
+                        para musculação, condicionamento, emagrecimento
+                        e qualidade de vida.
+                    </p>
+                    <p>
+                        Conte com equipamentos modernos, espaço para
+                        diferentes tipos de treino e uma equipe preparada
+                        para acompanhar sua jornada.
+                    </p>
+                    <ul class="check-list">
+                        <li>Musculação</li>
+                        <li>Emagrecimento</li>
+                        <li>Personal Trainer</li>
+                        <li>Spinning</li>
+                        <li>Público feminino</li>
+                        <li>Público masculino</li>
+                        <li>Adolescentes e adultos</li>
+                        <li>Produtos fitness</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         MODALIDADES
+    ========================================= -->
+    <section class="services" id="modalidades">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">TREINE DO SEU JEITO</div>
+                <h2 class="section-title">TUDO PARA VOCÊ <span>EVOLUIR.</span></h2>
+                <p class="section-description">
+                    Seja para ganhar força, melhorar seu condicionamento,
+                    emagrecer ou simplesmente cuidar da saúde, encontre
+                    na Power Gym uma estrutura para seus objetivos.
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <article class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Musculação</h3>
+                    <p>Equipamentos para você desenvolver força, resistência e massa muscular.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">🔥</div>
+                    <h3>Emagrecimento</h3>
+                    <p>Treinos para aumentar seu gasto energético e transformar sua rotina.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">🚴</div>
+                    <h3>Spinning</h3>
+                    <p>Aulas dinâmicas para elevar seu condicionamento e deixar o treino mais intenso.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">🏋</div>
+                    <h3>Personal Trainer</h3>
+                    <p>Acompanhamento individual para quem busca orientação mais personalizada.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">👟</div>
+                    <h3>Fitness &amp; Ciclismo</h3>
+                    <p>Produtos e acessórios para acompanhar você também fora da academia.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">💪</div>
+                    <h3>Para todos</h3>
+                    <p>Um ambiente para adolescentes e adultos, feminino e masculino.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         PLANOS E PREÇOS
+    ========================================= -->
+    <section class="plans" id="planos">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">ESCOLHA SEU PLANO</div>
+                <h2 class="section-title">INVISTA EM <span>VOCÊ.</span></h2>
+                <p class="section-description">
+                    Planos flexíveis que cabem no seu bolso. Venha treinar com a gente!
+                </p>
+            </div>
+
+            <div class="plans-grid">
+
+                <!-- Plano Mensal -->
+                <div class="plan-card">
+                    <h3>MENSAL</h3>
+                    <div class="plan-price">R$ 105</div>
+                    <div class="plan-period">Dinheiro, PIX ou Débito</div>
+                    <ul>
+                        <li>✔ Acesso livre</li>
+                        <li>✔ Sem fidelidade</li>
+                    </ul>
+                    <small>Diária avulsa: R$ 20</small>
+                    <a href="https://wa.me/551832815624?text=Olá!%20Quero%20o%20plano%20MENSAL%20da%20Power%20Gym." target="_blank" class="btn btn-primary btn-plan">Quero este →</a>
+                </div>
+
+                <!-- Plano Trimestral (Destaque) -->
+                <div class="plan-card featured">
+                    <div class="plan-badge">⭐ MAIS ESCOLHIDO</div>
+                    <h3>TRIMESTRAL</h3>
+                    <div class="plan-price">R$ 300</div>
+                    <div class="plan-period">à vista</div>
+                    <div class="plan-installment">ou 3x de R$ 105</div>
+                    <ul>
+                        <li>✔ Economia de R$ 15/mês</li>
+                        <li>✔ Fidelidade de 3 meses</li>
+                    </ul>
+                    <a href="https://wa.me/551832815624?text=Olá!%20Quero%20o%20plano%20TRIMESTRAL%20da%20Power%20Gym." target="_blank" class="btn btn-primary btn-plan">Quero este →</a>
+                </div>
+
+                <!-- Plano Semestral -->
+                <div class="plan-card">
+                    <h3>SEMESTRAL</h3>
+                    <div class="plan-price">R$ 570</div>
+                    <div class="plan-period">à vista</div>
+                    <div class="plan-installment">ou 6x de R$ 100</div>
+                    <ul>
+                        <li>✔ Melhor custo-benefício</li>
+                        <li>✔ Fidelidade de 6 meses</li>
+                    </ul>
+                    <a href="https://wa.me/551832815624?text=Olá!%20Quero%20o%20plano%20SEMESTRAL%20da%20Power%20Gym." target="_blank" class="btn btn-primary btn-plan">Quero este →</a>
+                </div>
+
+                <!-- Plano Anual (Destaque) -->
+                <div class="plan-card featured">
+                    <div class="plan-badge">🔥 ECONOMIA TOTAL</div>
+                    <h3>ANUAL</h3>
+                    <div class="plan-price">R$ 996</div>
+                    <div class="plan-period">à vista</div>
+                    <div class="plan-installment">ou 12x de R$ 90</div>
+                    <ul>
+                        <li>✔ Maior economia (R$ 83/mês)</li>
+                        <li>✔ Fidelidade de 12 meses</li>
+                    </ul>
+                    <a href="https://wa.me/551832815624?text=Olá!%20Quero%20o%20plano%20ANUAL%20da%20Power%20Gym." target="_blank" class="btn btn-primary btn-plan">Quero este →</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         ESTRUTURA (GALERIA)
+    ========================================= -->
+    <section class="gallery" id="estrutura">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">NOSSA ESTRUTURA</div>
+                <h2 class="section-title">TREINE EM UM <span>AMBIENTE POWER.</span></h2>
+                <p class="section-description">Espaço preparado para você colocar seu treino em prática.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img
+                        src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlKvK7jz8UeXpCXrrm9addoqgdvGsQpO7qtQojLI38p2wWH2J9oo1BoKTsPz_qn9TXE6qGlW56adXPncfNS6yju8YGRF7CuGBF0NCPxHa1tmhfXG_XHUm2la1Se40wC-MsU8Ej7hbdhv-c-=s1360-w1360-h1020-rw"
+                        alt="Sala de treinamento Power Gym"
+                    />
+                </div>
+                <div class="gallery-item">
+                    <img
+                        src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWk4Oy2Z0tUpq3I1KtVpcsPLAMTVgfTuoAS1ZDZFiPy0c-dnGMH5_u3N-hCCGkTOv71UjFg486j8_wcF_-Eibd_qQ5pJhVrCCJqXUhosMyo83EZEdEnCaoskTK7m5YBWiwxGuotERQ7v5BWd=s1360-w1360-h1020-rw"
+                        alt="Esteiras Power Gym"
+                    />
+                </div>
+                <div class="gallery-item">
+                    <img
+                        src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWk1iKv7VZYqEz480kDPsx202GPntcoWbfmftQNFP6mvBjToahoEEwDOosdsaoDA3lo8z1GMkR_iGreWvNq-qwwE05PECIzTXVlFIv_oZXgCug81yFUfztBUZPgg7aHXuoILX2Ryy52zZBbB=s1360-w1360-h1020-rw"
+                        alt="Fachada Power Gym"
+                    />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         AVALIAÇÕES
+    ========================================= -->
+    <section class="testimonials" id="avaliacoes">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">QUEM TREINA, APROVA</div>
+                <h2 class="section-title">O QUE NOSSOS <span>ALUNOS DIZEM.</span></h2>
+            </div>
+
+            <div class="testimonial-grid">
+                <article class="testimonial">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"Bom ambiente, bons aparelhos de musculação, mas sempre lotada kkk."</p>
+                    <div class="testimonial-author">Aluno Power Gym <span>Avaliação Google</span></div>
+                </article>
+                <article class="testimonial">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"O pessoal é bem acolhedor e os instrutores e a recepção dão todo o apoio!"</p>
+                    <div class="testimonial-author">Aluno Power Gym <span>Avaliação Google</span></div>
+                </article>
+                <article class="testimonial">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"Profissionais super competentes, equipe nota 1000!"</p>
+                    <div class="testimonial-author">Aluno Power Gym <span>Avaliação Google</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CTA FINAL
+    ========================================= -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <div>
+                    <h2>SEU OBJETIVO.<br />NOSSA POWER.</h2>
+                    <p>
+                        Está esperando o quê? Venha conhecer a Power Gym
+                        e dê o primeiro passo para uma rotina mais forte.
+                    </p>
+                </div>
+                <a
+                    href="https://wa.me/551832815624?text=Olá!%20Quero%20conhecer%20a%20Power%20Gym%20e%20saber%20sobre%20a%20matrícula."
+                    target="_blank"
+                    class="btn"
+                >Quero ser aluno →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CONTATO
+    ========================================= -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">FALE COM A POWER GYM</div>
+                <h2 class="section-title">VEM <span>TREINAR.</span></h2>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>ENCONTRE <span style="color:#ff6a00">A GENTE.</span></h3>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Endereço</strong>
+                            <span>
+                                R. Antônio Venâncio Lopes, 3-49<br />
+                                Centro, Presidente Epitácio - SP<br />
+                                CEP 19470-000
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">☎</div>
+                        <div>
+                            <strong>Telefone</strong>
+                            <span>(18) 3281-5624</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">◎</div>
+                        <div>
+                            <strong>Instagram</strong>
+                            <span>@powergympe</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div>
+                            <strong>Funcionamento</strong>
+                            <span>Consulte os horários diretamente com a academia.</span>
+                        </div>
+                    </div>
+
+                    <a
+                        href="https://wa.me/551832815624"
+                        target="_blank"
+                        class="btn btn-primary"
+                        style="margin-top:10px;"
+                    >Falar pelo WhatsApp</a>
+                </div>
+
+                <div class="map">
+                    <a
+                        href="https://www.google.com/maps/search/?api=1&query=R.%20Antônio%20Venâncio%20Lopes%2C%203-49%2C%20Presidente%20Epitácio%20SP"
+                        target="_blank"
+                        class="btn btn-primary map-button"
+                    >Abrir localização →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         RODAPÉ
+    ========================================= -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">POWER <span>GYM</span></div>
+            <div class="copyright">© 2026 Academia Power Gym. Todos os direitos reservados.</div>
+            <a href="https://www.instagram.com/powergympe/" target="_blank" class="instagram">@POWERGYMPE</a>
+        </div>
+    </footer>
+
+    <!-- ========================================
+         WHATSAPP FLUTUANTE
+    ========================================= -->
+    <a
+        href="https://wa.me/551832815624?text=Olá!%20Vi%20o%20site%20da%20Power%20Gym%20e%20quero%20saber%20mais."
+        target="_blank"
+        class="whatsapp"
+        aria-label="Falar com a Power Gym pelo WhatsApp"
+    >☎</a>
+
+    <!-- ========================================
+         JAVASCRIPT
+    ========================================= -->
+    <script>
+        // Menu mobile
+        const menuButton = document.getElementById("menuButton");
+        const nav = document.getElementById("nav");
+
+        menuButton.addEventListener("click", () => {
+            nav.classList.toggle("active");
+            menuButton.innerHTML = nav.classList.contains("active") ? "✕" : "☰";
+        });
+
+        document.querySelectorAll("nav a").forEach((link) => {
+            link.addEventListener("click", () => {
+                nav.classList.remove("active");
+                menuButton.innerHTML = "☰";
+            });
+        });
+
+        // Animação de entrada dos cards
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+                    }
+                });
+            }, { threshold: 0.12 }
+        );
+
+        document
+            .querySelectorAll(
+                ".service-card, .testimonial, .about-content, .about-images, .plan-card"
+            )
+            .forEach((el) => {
+                el.style.opacity = "0";
+                el.style.transform = "translateY(25px)";
+                el.style.transition = "opacity 0.7s ease, transform 0.7s ease";
+                observer.observe(el);
+            });
+    </script>
+
+</body>
+</html>
